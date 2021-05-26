@@ -1,0 +1,43 @@
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info text-light">
+    <h1 class="nav-brand mr-5" style="margin-left: 45%;">PATIENT LIST</h1>
+</nav>
+
+
+<div style="width:70%; margin-left: 17% ;margin-top: 2%; font-size: medium;">
+    
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FNAME</th>
+        <th scope="col">LName</th>
+        <th scope="col">Gender</th>
+        <th scope="col">diagnosis</th>
+        <th scope="col">Age</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col" colspan="2" style="text-align: center;">Action</th>
+      </tr>
+    </thead>
+    <tbody class="thead-light">
+        <tr *ngFor="let p of patients">
+          
+          <td>{{p.patient_id}}</td>
+          <td>{{p.firstName}}</td>
+          <td>{{p.lastName}}</td>
+          <td>{{p.gender}}</td>
+          <td>{{p.diagnosis}}</td>
+          <td>{{p.patient_age}}</td>
+          <td>{{p.phone_number}}</td>
+          <td>{{p.email}}</td>
+          <td>{{p.address}}</td>
+        
+          <td><button class="btn btn-warning" routerLink="/patient-edit/{{p.patient_id}}" >Update</button></td>
+          <td><button class="btn btn-danger" (click)="onDelete(p)">Delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</body>

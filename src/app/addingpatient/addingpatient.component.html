@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adding Patient Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+      <form  [formGroup]="form" >
+        <div class="banner">
+          <h1> Adding Patient Form</h1>
+        </div>
+       
+        <div class="item">
+          <p><b>Patient Name</b></p>
+          <div class="name-item">
+            <input formControlName="firstname" type="text" [(ngModel)]="patientDetails.firstName" name="firstName" placeholder="First" />
+            <div *ngIf="f.firstname.touched && f.firstname.invalid" class="alert alert-danger">First Name required</div>
+            <input formControlName="lastname" type="text" [(ngModel)]="patientDetails.lastName" name="lastName" placeholder="Last" />
+            <div *ngIf="f.lastname.touched && f.lastname.invalid" class="alert alert-danger">Last Name required</div>
+
+          </div>
+        </div>
+        <div class="item">
+          <p><b>Email</b></p>
+          <input formControlName="email" type="email" [(ngModel)]="patientDetails.email" name="email" placeholder="someone@gmail.com"/>
+          <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">Email required</div> 
+        </div>
+         <div class="item">
+          <p><b>password</b></p>
+          <input formControlName="password" type="text" [(ngModel)]="patientDetails.password" name="password" placeholder="please enter the password"/>
+          <div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">Password required</div> 
+        </div>
+         <div class="item">
+          <p><b>Symptoms</b></p>
+          <input  formControlName="symptoms" type="text" [(ngModel)]="patientDetails.diagnosis" name="diagnosis" placeholder="enter symtoms"/>
+          <div *ngIf="f.symptoms.touched && f.symptoms.invalid" class="alert alert-danger">Symptoms is required</div>
+         </div>
+        <div class="item">
+          <p><b>Phone Number</b></p>
+          <input formControlName="mobilenumber" type="number" [(ngModel)]="patientDetails.phone_number" name="phone_number" placeholder="Enter phone number"/>
+          <div *ngIf="f.mobilenumber.touched && f.mobilenumber.invalid" class="alert alert-danger">Mobilenumber required</div>
+        </div>
+        <div class="item">
+          <p><b>Patient Age</b></p>
+          <input  formControlName="age" type="number" [(ngModel)]="patientDetails.patient_age" name="patient_age" required/>
+          <div *ngIf="f.age.touched && f.age.invalid" class="alert alert-danger">Age required</div>
+        </div>
+        <div>
+          <p><b>Gender</b></p>
+          <select   [(ngModel)]="patientDetails.gender" formControlName="gender" name="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          <div *ngIf="f.gender.touched && f.gender.invalid" class="alert alert-danger">Gender required</div>
+        </div>
+        <div class="item">
+          <p><b>Patient Address</b></p>
+          <input formControlName="address" type="text" [(ngModel)]="patientDetails.address" name="address" placeholder="Street address" required/>
+          <div *ngIf="f.address.invalid && f.address.touched" class="alert alert-danger">Address required</div>
+        
+        </div>
+        <div class="btn-block">
+          <button [disabled]="form.invalid" type="submit" (click)="createPatient()">Add Patient</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

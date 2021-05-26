@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Appointment Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  
+     
+
+  </head>
+  <body>
+    
+    <div class="testbox">
+      <form action="/" [formGroup]="exform" >
+        <div class="banner">
+          <h1>Patient Appointment Form</h1>
+      </div>
+      <div class="item">
+        <p>Name</p>
+        <div class="name-item">
+          <input formControlName="firstname" type="text" [(ngModel)]="bookingDetails.firstName"  name="firstName" placeholder="First" />
+          <div *ngIf="f.firstname.touched && f.firstname.invalid" class="alert alert-danger">Enter First Name</div>
+          <input formControlName="lastname" type="text" [(ngModel)]="bookingDetails.lastName"  name="lastName" placeholder="Last" />
+          <div *ngIf="f.lastname.touched && f.lastname.invalid" class="alert alert-danger">Enter Last Name</div>
+        </div>
+      </div>
+      <div class="item">
+        <p>Email</p>
+        <input formControlName="email" type="email" [(ngModel)]="bookingDetails.email"  name="email"/>
+        <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">Enter Valid email </div> 
+      </div>
+      <div class="item">
+        <p>Phone</p>
+        <input formControlName="mobilenumber" type="number" [(ngModel)]="bookingDetails.phone_number"  name="phone_number" placeholder="Phone number"/>
+        <div *ngIf="f.mobilenumber.touched && f.mobilenumber.invalid" class="alert alert-danger">Enter Correct Mobile number</div>
+      </div>
+      <div class="item">
+        <p>Age</p>
+        <input formControlName="age" type="number" [(ngModel)]="bookingDetails.age"  name="age" placeholder="Age"/>
+        <div *ngIf="f.age.touched && f.age.invalid" class="alert alert-danger">Enter Age</div>
+      </div>
+        <div class="item">
+          <p>Symptoms</p>
+          <input formControlName="symptoms" type="text" [(ngModel)]="bookingDetails.symptoms"  name="symptoms"/>
+          <div *ngIf="f.symptoms.touched && f.symptoms.invalid" class="alert alert-danger">Enter Symptoms</div>
+        </div>
+      <div class="item">
+        <p>Address</p>
+        <input formControlName="address" type="text" [(ngModel)]="bookingDetails.address"  name="address" placeholder="Enter address" required/>
+        <div *ngIf="f.address.invalid && f.address.touched" class="alert alert-danger">Enter Address</div>
+        
+      </div>
+<br>
+
+ <label for="Vaccination">Please Select Your Vccination Status:</label>
+  <select required id="vstatus" formControlName="status" [(ngModel)]="bookingDetails.vaccine_status" name="vaccine_status" onchange="changestatus()">
+
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+         
+            </select>
+            <div *ngIf="f.status.invalid && f.status.touched" class="alert alert-danger">vaccination type required</div>
+        <div class="question" id="radio">
+          <p> Vaccine type</p>
+          <div class="question-answer">
+            <div>
+              <input type="radio" formControlName="vac" value="covaxin" id="radio_1" [(ngModel)]="bookingDetails.vaccine_type"  name="vaccine_type"/>
+              <label for="radio_1" class="radio"><span>covaxin</span></label>
+              <div *ngIf="f.vac.invalid && f.vac.touched" class="alert alert-danger">vaccination type required</div>
+            </div>
+            <div>
+              <input type="radio" formControlName="vac" value="covishield" id="radio_2" [(ngModel)]="bookingDetails.vaccine_type"  name="vaccine_type"/>
+              <label for="radio_2" class="radio"><span>covishield</span></label>
+              <div *ngIf="f.vac.invalid && f.vac.touched" class="alert alert-danger">vaccination type required</div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="question" id="radio1">
+          <p> Covid symptoms</p>
+          <div class="question-answer">
+            <div>
+              <input type="radio" formControlName="sym" value="yes" id="radio_3" [(ngModel)]="bookingDetails.covid_symptoms"  name="covid_symptoms"/>
+              <label for="radio_3" class="radio"><span>yes</span></label>
+              <div *ngIf="f.sym.invalid && f.sym.touched" class="alert alert-danger">symptoms required</div>
+            </div>
+            <div>
+              <input type="radio" formControlName="sym" value="no" id="radio_4" [(ngModel)]="bookingDetails.covid_symptoms"  name="covid_symptoms"/>
+              <label for="radio_4" class="radio"><span>no</span></label>
+              <div *ngIf="f.sym.invalid && f.sym.touched" class="alert alert-danger">symptoms required</div>
+            </div>
+          </div>
+          
+        </div>
+          <br>
+          
+          
+
+          <div>
+            <p>Gender</p>
+            <select  formControlName="gender"  [(ngModel)]="bookingDetails.gender"  name="gender">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div *ngIf="f.gender.invalid && f.gender.touched" class="alert alert-danger">Gender required</div>
+          </div>
+        <div class="item">
+          <p>Select Appointment Date</p>
+          <input type="date" formControlName="app" [(ngModel)]="bookingDetails.appointment_date"  name="appointment_date" required/>
+          <i class="fas fa-calendar-alt"></i>
+          <div *ngIf="f.app.invalid && f.app.touched" class="alert alert-danger">appointment date  required</div>
+        </div>
+        
+        <div class="btn-block">
+          <button [disabled]="exform.invalid" type="submit" (click)="bookAppointment()">Book Appointment</button>
+        </div>
+      </form>
+    </div>
+
+    
+  </body>
+</html>

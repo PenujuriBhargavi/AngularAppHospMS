@@ -1,0 +1,51 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-info text-light">
+    <h1 class="nav-brand mr-5" style="margin-left: 45%;">Appointment History</h1>
+</nav>
+
+
+<div style="width:70%; margin-left:5%; margin-top: 2%; font-size: medium;">
+    
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">BookingID</th>
+        <th scope="col">VaccineStatus</th>
+        <th scope="col">VaccineType</th>
+        <th scope="col">CovidSymptoms</th>
+        <th scope="col">AppointmentDate</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Symptoms</th>
+        <th scope="col">Age</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">ApprovalStatus</th>
+        
+      </tr>
+    </thead>
+    <tbody class="thead-light">
+        <tr *ngFor="let b of bookings">
+          <td>{{b.booking_id}}</td>
+          <td>{{b.vaccine_status}}</td>
+          <td>{{b.vaccine_type}}</td>
+          <td>{{b.covid_symptoms}}</td>
+          <td>{{b.appointment_date}}</td>
+          <td>{{b.firstName}}</td>
+          <td>{{b.lastName}}</td>
+          <td>{{b.gender}}</td>
+          <td>{{b.symptoms}}</td>
+          <td>{{b.age}}</td>
+          <td>{{b.phone_number}}</td>
+          <td>{{b.email}}</td>
+          <td>{{b.address}}</td>
+          <td>{{b.approval_status}}</td>
+
+          
+        </tr>
+    </tbody>
+  </table>
+</div>
